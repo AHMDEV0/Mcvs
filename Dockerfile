@@ -7,13 +7,12 @@ RUN apk update && apk add --no-cache \
     wget \
     sudo \
     bash \
-    openjdk17
+    openjdk17 \
+    nodejs \
+    npm
 
-# Verify Java installation
-RUN java -version
-
-# Install Visual Studio Code (code-server)
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+# Install code-server via npm
+RUN npm install -g code-server
 
 # Set the working directory
 WORKDIR /app
